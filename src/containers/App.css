@@ -1,0 +1,49 @@
+.App {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    flex-flow: column;
+    margin: 10px auto;
+}
+
+.controllers {
+    display: flex;
+}
+
+.buttons {
+    background: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    margin: auto;
+    width: 150px;
+    cursor: pointer;
+}
+
+.student-info {
+    display: flex;
+}
+
+.student-info > div {
+    flex: 1;
+    margin: 1em;
+
+}
+
+.green-button:hover {
+    background: #090;
+    color: white;
+    font-weight: bold;
+}
+
+.red-button:hover {
+    background: #900;
+    color: white;
+    font-weight: bold;
+}

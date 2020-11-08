@@ -1,0 +1,32 @@
+.student-form input {
+    padding: .1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.student-form {
+    min-width: 30%;
+    max-width: 50%;
+    align-self: center;
+}
+
+.student-form fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.student-form label {
+    display: flex;
+    flex-flow: column;
+    margin: 1em;
+}
+
+.student-form input{
+    font-size: 1em;
+    padding: .5em;
+}
+
+.student-form [type="button"] {
+    float: right;
+    padding: .5em 1em;
+}

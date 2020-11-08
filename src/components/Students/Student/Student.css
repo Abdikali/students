@@ -1,0 +1,41 @@
+.student {
+    /*width: 60%;*/
+    position: relative;
+    margin: 10px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+}
+
+.student span {
+    font-weight: bold;
+}
+
+
+.student-controllers{
+    display: flex;
+    justify-content: space-between;
+}
+
+.student-controllers button{
+    padding: .5em 3em;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: .3em;
+}
+
+.student-controllers button:first-child:hover{
+    background: #090;
+    color: white;
+    font-weight: bold;
+}
+
+.student-controllers button:last-child:hover{
+    background: #900;
+    color: white;
+    font-weight: bold;
+}
+
+

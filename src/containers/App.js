@@ -127,7 +127,7 @@ export default class App extends Component {
             <div className="main">
                 <AuthContext.Provider value={{authenticated: this.state.authenticated, login: this.loginHandler}}>
                     <div className="controllers">
-
+                        <h1>OLOLOLO</h1>
                         <button
                             className="buttons"
                             onClick={this.changeNameHandler}>

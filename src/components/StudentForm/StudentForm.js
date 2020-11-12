@@ -16,7 +16,8 @@ const studentForm = props => {
                         <input type="text" placeholder="Student age" name="age" onChange={changeAge} value={age}/>
                     </label>
                     <label htmlFor="course">Student course:
-                        <input type="text" placeholder="Student course" name="course" onChange={changeCourse} value={course}/>
+                        <input type="text" placeholder="Student course" name="course" onChange={changeCourse}
+                               value={course}/>
                     </label>
                     <label htmlFor="gpa">Student GPA:
                         <input type="text" placeholder="Student GPA" name="gpa" onChange={changeGpa} value={gpa}/>

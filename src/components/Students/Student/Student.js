@@ -1,10 +1,16 @@
 import React from 'react';
 import "./Student.css";
+import PropTypes from 'prop-types';
+import AuthContext from '../../../context/auth-context';
 
 const student = props => {
     const {name, age, course, gpa} = props;
     return (
         <div className="student">
+            <AuthContext.Consumer>
+                {(context) => context.authenticated ? <p>Student is logged in </p> : <p>Student is not logged in</p>}
+            </AuthContext.Consumer>
+
             <h1>Name: {name}</h1>
             <hr/>
             <div>
@@ -22,6 +28,16 @@ const student = props => {
             </div>
         </div>
     )
+};
+
+student.propTypes = {
+    change: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    course: PropTypes.number,
+    gpa: PropTypes.number,
+    delete: PropTypes.func,
+
 };
 
 export default student;

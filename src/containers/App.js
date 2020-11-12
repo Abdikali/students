@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import Student from '../components/Students/Student/Student'
 import StudentForm from '../components/StudentForm/StudentForm';
 import Students from '../components/Students/Students';
+
+import AuthContext from '../context/auth-context';
 
 export default class App extends Component {
 
@@ -12,9 +13,16 @@ export default class App extends Component {
     }
 
 
+    static contextType = AuthContext;
+
+
     static getDerivedStateFromProps(props, state) {
         console.log("App.js [getDerivedStateFromProps]", props);
         return state;
+    }
+
+    componentDidMount() {
+        console.log(this.context.authenticated);
     }
 
     state = {
@@ -28,6 +36,11 @@ export default class App extends Component {
         course: "",
         gpa: "",
         changeIndex: null,
+        authenticated: false,
+    };
+
+    loginHandler = () => {
+        this.setState({authenticated: !this.state.authenticated})
     };
 
     changeNameHandler = () => {
@@ -66,6 +79,8 @@ export default class App extends Component {
     showStudents = () => {
         return this.state.hidden === "Hide" ? <div>{this.renderStudents()}</div> : null;
     };
+
+
     nameChangeHandler = event => {
         this.setState({name: event.target.value})
 
@@ -110,31 +125,42 @@ export default class App extends Component {
         const buttonStyle = this.state.hidden === "Show" ? "green-button buttons" : "red-button buttons";
         return (
             <div className="main">
-                <h1>{this.props.name}</h1>
-                <div className="controllers">
+                <AuthContext.Provider value={{authenticated: this.state.authenticated, login: this.loginHandler}}>
+                    <div className="controllers">
 
-                    <button
-                        className="buttons"
-                        onClick={this.changeNameHandler}>
-                        Change Name
-                    </button>
-                    <button
-                        className={buttonStyle}
-                        onClick={this.hideStudents}>
-                        {this.state.hidden} Students
-                    </button>
-                </div>
-                <div className="student-info">
-                    <StudentForm
-                        student={student}
-                        changeName={this.nameChangeHandler}
-                        changeAge={this.ageChangeHandler}
-                        changeCourse={this.courseChangeHandler}
-                        changeGpa={this.gpaChangeHandler}
-                        submit={this.onFormSubmitHandler}
-                    />
-                    {this.showStudents()}
-                </div>
+                        <button
+                            className="buttons"
+                            onClick={this.changeNameHandler}>
+                            Change Name
+                        </button>
+                        <button
+                            className={buttonStyle}
+                            onClick={this.hideStudents}>
+                            {this.state.hidden} Students
+                        </button>
+                        <AuthContext.Consumer>
+                            {context =>
+                                <button
+                                    className="buttons"
+                                    onClick={context.login}
+                                >Login
+                                </button>}
+                        </AuthContext.Consumer>
+                    </div>
+                    <div className="student-info">
+                        <StudentForm
+                            student={student}
+                            almau4ever={this.nameChangeHandler}
+                            changeAge={this.ageChangeHandler}
+                            changeCourse={this.courseChangeHandler}
+                            changeGpa={this.gpaChangeHandler}
+                            submit={this.onFormSubmitHandler}
+                        />
+
+                        {this.showStudents()}
+
+                    </div>
+                </AuthContext.Provider>
             </div>
         )
     }
